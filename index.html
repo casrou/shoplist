@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Opskrift 🠦 Indkøbsliste</title>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"> -->
+    <link rel="stylesheet" href="css/mystyles.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+      <h2 class="title">Opskrift 🠦 Indkøbsliste</h2>
+      <!--
+        Add new ingredient
+      -->
+      <h3>Tilføj ingrediens</h3>
+      <div class="field is-grouped is-grouped-multiline">
+        <p class="control">
+          <input id="inputAmount" class="input" type="text" placeholder="Antal">
+        </p>
+        <div class="control">
+          <div class="select">
+            <select id="selectmeasurement">
+            </select>
+          </div>
+        </div>
+        <p class="control">
+          <input id="inputIngredient" class="input" type="text" placeholder="Ingrediens">
+        </p>
+        <p class="control">
+          <input id="inputRecipe" class="input" type="text" placeholder="Opskrift">
+        </p>
+        <p class="control">
+          <a id="btnAddIngredient" class="button is-info">
+            Tilføj
+          </a>
+        </p>
+      </div>
+      <hr>
+      <!--
+        Add conversions
+      -->
+      <h3>Tilføj konvertering</h3>
+      <div class="field is-grouped is-grouped-multiline">
+        <p class="control">
+          <input id="inputConversionIngredient" class="input" type="text" placeholder="Ingrediens">
+        </p>
+        <div class="control">Fra
+          <div class="select">
+            <select id="inputConversionFrom">
+            </select>
+          </div>
+        </div>
+        <div class="control">Til
+          <div class="select">
+            <select id="inputConversionTo">
+            </select>
+          </div>
+        </div>
+        <p class="control">
+          <input id="inputConversionFactor" class="input" type="text" placeholder="Faktor">
+        </p>
+        <p class="control">
+          <a id="btnConversionAdd" class="button is-info">
+            Tilføj
+          </a>
+        </p>
+      </div>
+      <!--
+        Added conversions list
+      -->
+      <ul id="liConversions"></ul>
+      <hr>
+      <!--
+        Added ingredients table
+      -->
+      <table id="tblIngredients" class="table is-fullwidth">
+        <thead>
+          <th>Mængde</th>
+          <th>Ingrediens</th>
+          <th>Opskrift</th>
+          <th></th>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <a id="btnCombine" onclick="combineShoppingLines()" class="button is-success is-small is-hidden">
+        Kombinér
+      </a>
+    </div>    
+  </section>
+  </body>
+</html>
