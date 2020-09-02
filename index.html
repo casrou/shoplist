@@ -6,6 +6,19 @@
     <title>Opskrift 🠦 Indkøbsliste</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"> -->
     <link rel="stylesheet" href="css/mystyles.css">
+    <style media="print">
+      body * {
+        visibility: hidden;
+      }
+      #tblIngredients * {
+        visibility: visible;
+      }
+      #tblIngredients {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script defer src="script.js"></script>
   </head>
@@ -16,7 +29,7 @@
       <!--
         Add new ingredient
       -->
-      <h3>Tilføj ingrediens</h3>
+      <h5 class="title is-5">Tilføj ingrediens</h5>
       <div class="field is-grouped is-grouped-multiline">
         <p class="control">
           <input id="inputAmount" class="input" type="text" placeholder="Antal">
@@ -43,23 +56,29 @@
       <!--
         Add conversions
       -->
-      <h3>Tilføj konvertering</h3>
+      <h5 class="title is-5">Tilføj konvertering</h5>
       <div class="field is-grouped is-grouped-multiline">
         <p class="control">
           <input id="inputConversionIngredient" class="input" type="text" placeholder="Ingrediens">
         </p>
-        <div class="control">Fra
+        <div class="control has-icons-left">
           <div class="select">
             <select id="inputConversionFrom">
             </select>
           </div>
+          <span class="icon is-left">
+            Fra
+          </span>
         </div>
-        <div class="control">Til
+        <div class="control has-icons-left">
           <div class="select">
             <select id="inputConversionTo">
             </select>
           </div>
-        </div>
+          <span class="icon is-left">
+            Til
+          </span>
+        </div>        
         <p class="control">
           <input id="inputConversionFactor" class="input" type="text" placeholder="Faktor">
         </p>
@@ -86,9 +105,16 @@
         </thead>
         <tbody></tbody>
       </table>
-      <a id="btnCombine" onclick="combineShoppingLines()" class="button is-success is-small is-hidden">
+      <!-- <a id="btnCombine" onclick="combineShoppingLines()" class="button is-success is-small is-hidden">
         Kombinér
+      </a> -->
+      <a id="btnSave" class="button is-success is-small">
+        Gem
       </a>
+      <a id="btnExport" class="button is-warning is-small">
+        Eksportér
+      </a>
+      <input type="text" id="exportUrl" class="is-hidden"></input>
     </div>    
   </section>
   </body>

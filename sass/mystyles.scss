@@ -4,6 +4,10 @@
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
 
+.doneShopping {
+    text-decoration: line-through;
+}
+
 // 2. Set your own initial variables
 // Update blue
 // $blue: #72d0eb;

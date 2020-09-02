@@ -5,6 +5,7 @@ if (location.protocol === 'http:') {
 let selectmeasurement = document.getElementById("selectmeasurement");
 let inputIngredient = document.getElementById("inputIngredient");
 let inputAmount = document.getElementById("inputAmount");
+let tblIngredients = document.getElementById("tblIngredients");
 
 function validateNumberInput(event) {
     let input = event.target.value;
@@ -51,7 +52,20 @@ for (let i = 0; i < measurements.length; i++) {
 
 let shoppingLines = [];
 
-let tblIngredients = document.getElementById("tblIngredients");
+const urlParams = new URLSearchParams(window.location.search);
+const importParam = urlParams.get('import');
+
+const localSaved = window.localStorage.getItem("shoppingLines");
+
+if(importParam){
+    shoppingLines = JSON.parse(importParam);
+} else if(localSaved) {
+    shoppingLines = JSON.parse(localSaved);
+}
+
+if(!shoppingLines) shoppingLines = [];
+
+updateTable();
 
 function createRecipeCell(tags) {
     tags = Array.from(new Set(tags));
@@ -70,6 +84,7 @@ function createRecipeCell(tags) {
 
 function createRow(amount, measurement, ingredient, recipe, id) {
     let row = tblIngredients.getElementsByTagName('tbody')[0].insertRow();
+    row.onclick = toggleDone;
     let amountCell = row.insertCell(0);
     let ingredientCell = row.insertCell(1);
     let recipeCell = row.insertCell(2);
@@ -334,4 +349,40 @@ function updateConversionList(){
         li.appendChild(text);
         list.appendChild(li);
     }
+}
+
+/*
+    GENERATE SHOPPING LIST
+*/
+
+function toggleDone(event){
+    event.target.parentNode.classList.toggle("doneShopping");
+}
+
+// btnGenerate.onclick = function(){
+//     let tbl = document.getElementById("tblIngredients");
+//     let trs = tbl.querySelectorAll("tr");
+//     trs.forEach(tr => {
+//         tr.onclick = toggleDone;
+//     });
+//     localStorage.setItem("shoppingLines", JSON.stringify(shoppingLines))
+// }
+
+btnSave.onclick = function(){
+    window.localStorage.setItem("shoppingLines", JSON.stringify(shoppingLines));
+}
+
+btnExport.onclick = function(){
+    var copyText = document.getElementById("exportUrl");
+    copyText.classList.remove("is-hidden");
+    copyText.value = `https://mad.crcn.dk?import=` + JSON.stringify(shoppingLines);
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+    copyText.classList.add("is-hidden");
+    alert("Linket til indkøbslisten er kopieret.")
 }
