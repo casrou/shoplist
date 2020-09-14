@@ -65,7 +65,7 @@ const importShoppingLinesParam = urlParams.get('shoppingLines');
 const localSaved = window.localStorage.getItem("shoppingLines");
 
 if(importShoppingLinesParam){
-    shoppingLines = JSON.parse(importShoppingLinesParam);
+    shoppingLines = JSON.parse(decodeURI(importShoppingLinesParam));
 } else if(localSaved) {
     shoppingLines = JSON.parse(localSaved);
 }
@@ -377,7 +377,7 @@ let conversions = []
 const importConversionsParam = urlParams.get('conversions');
 const localConversions = window.localStorage.getItem("conversions");
 if(importShoppingLinesParam){
-    conversions = JSON.parse(importConversionsParam);
+    conversions = JSON.parse(decodeURI(importConversionsParam));
 } else if(localConversions) {
     conversions = JSON.parse(localConversions);
 }
@@ -447,7 +447,7 @@ btnSave.onclick = function(){
 btnExport.onclick = function(){
     var copyText = document.getElementById("exportUrl");
     copyText.classList.remove("is-hidden");
-    copyText.value = `https://mad.crcn.dk?shoppingLines=` + JSON.stringify(shoppingLines) + `&conversions=` + JSON.stringify(conversions);
+    copyText.value = encodeURI(`https://mad.crcn.dk?shoppingLines=` + JSON.stringify(shoppingLines) + `&conversions=` + JSON.stringify(conversions));
 
     /* Select the text field */
     copyText.select();
