@@ -1,6 +1,3 @@
-.doneShopping {
-  text-decoration: line-through; }
-
 /*! bulma.io v0.9.0 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
@@ -7482,3 +7479,13 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .footer {
   background-color: #fafafa;
   padding: 3rem 1.5rem 6rem; }
+
+.tag:not(body) .icon:first-child:last-child {
+  margin-left: 0;
+  margin-right: 0; }
+
+.doneShopping:not(.tag) {
+  text-decoration: line-through; }
+
+#divAddIngredient > .is-6 {
+  margin-bottom: 0.5rem; }

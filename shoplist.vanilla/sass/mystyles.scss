@@ -4,10 +4,6 @@
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 @import "../node_modules/bulma/sass/utilities/functions";
 
-.doneShopping {
-    text-decoration: line-through;
-}
-
 // 2. Set your own initial variables
 // Update blue
 // $blue: #72d0eb;
@@ -45,3 +41,16 @@
 
 // 6. Import the rest of Bulma
 @import "../node_modules/bulma/bulma";
+
+.tag:not(body) .icon:first-child:last-child {
+    margin-left: 0; 
+    margin-right: 0;
+}
+
+.doneShopping:not(.tag) {
+    text-decoration: line-through;
+}
+
+#divAddIngredient > .is-6 {
+    margin-bottom: 0.5rem;
+}

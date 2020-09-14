@@ -1,0 +1,16 @@
+<table id="tblIngredients" class="table is-fullwidth">
+    <thead>
+        <th>Mængde</th>
+        <th>Ingrediens</th>
+        <th>Opskrift</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ingredient of ingredients">
+            <td>{{ ingredient.amount }} {{ ingredient.measurement }}</td>
+            <td>{{ ingredient.ingredient }}</td>
+            <td>{{ ingredient.recipe }}</td>
+            <td><button (click)="editIngredient(ingredient.id)">Edit</button></td>
+        </tr>
+    </tbody>
+</table>
